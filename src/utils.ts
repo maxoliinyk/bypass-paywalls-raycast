@@ -5,6 +5,7 @@ interface BrowserInfo {
   engine: "webkit" | "chromium" | "gecko";
 }
 
+// List of supported and tested browsers
 const SUPPORTED_BROWSERS: Record<string, BrowserInfo> = {
   // WebKit
   "Safari": { engine: "webkit" },
@@ -29,30 +30,25 @@ async function getActiveBrowserInfo(): Promise<{ name: string; engine: BrowserIn
 
   try {
     frontmostAppName = await runAppleScript(script);
-    console.log(`[getActiveBrowserInfo] Detected frontmost app name (raw): '${frontmostAppName}'`);
-    // frontmostAppName = frontmostAppName.toLowerCase(); // Convert to lowercase
-    console.log(`[getActiveBrowserInfo] Detected frontmost app name (lowercase): '${frontmostAppName}'`);
-  } catch (e) {
-    console.error("[getActiveBrowserInfo] AppleScript failed to get frontmost application name:", e);
+    console.log(`[getActiveBrowserInfo] Detected frontmost app name: '${frontmostAppName}'`);
+  } catch (error) {
+    console.error("[getActiveBrowserInfo] AppleScript failed to get frontmost application name:", error);
     await showToast({
       style: Toast.Style.Failure,
       title: "Error Getting Active App",
-      message: "Could not determine the frontmost application via AppleScript.",
+      message: "Could not determine the frontmost application.",
     });
-    throw new Error("AppleScript failed to get frontmost application name.");
+    throw new Error("Script failed to get frontmost application name.");
   }
 
   const browserInfo = SUPPORTED_BROWSERS[frontmostAppName];
   if (browserInfo) {
     return { name: frontmostAppName, engine: browserInfo.engine };
   } else {
-    console.warn(`[getActiveBrowserInfo] Frontmost app ('${frontmostAppName}') is not in SUPPORTED_BROWSERS.`);
-    await showToast({
-      style: Toast.Style.Failure,
-      title: "Unsupported Browser Active",
-      message: `The active application ('${frontmostAppName}') is not a recognized browser in the extension's list. Currently supported: ${Object.keys(SUPPORTED_BROWSERS).join(", ")}`,
-    });
-    throw new Error(`Frontmost application ('${frontmostAppName}') is not a supported browser.`);
+    console.warn(`[getActiveBrowserInfo] Frontmost app ('${frontmostAppName}') is not in SUPPORTED_BROWSERS. Assuming Chromium engine as a fallback.`);
+
+    // If there's unknown browser – assume that's Chromium (works in most cases)
+    return { name: frontmostAppName, engine: "chromium" };
   }
 }
 
@@ -77,14 +73,6 @@ export async function getCurrentTabURL(): Promise<string> {
       end tell
       return the clipboard
     `;
-  } else {
-    // Fallback or error for unhandled engines
-    await showToast({
-      style: Toast.Style.Failure,
-      title: "Unsupported Browser Engine",
-      message: `The browser engine '${browserInfo.engine}' for '${browserInfo.name}' is not supported for getting current URL.`,
-    });
-    throw new Error(`Unsupported browser engine: ${browserInfo.engine}`);
   }
 
   try {

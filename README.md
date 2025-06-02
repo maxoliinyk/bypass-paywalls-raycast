@@ -8,7 +8,7 @@ This Raycast extension allows you to bypass paywalls on popular services. It wor
 - **Multiple Modes**:
     - **Active Tab Detection**: Automatically detects the URL from your current browser tab. This is perfect for creating a keyboard shortcut for quick access.
     - **Bypass from Clipboard**: Bypasses the paywall for a URL copied to your clipboard.
-- **Browser Support**: Works with a variety of popular browsers (Safari, Chrome, Edge, Arc, Brave, Vivaldi, Orion).
+- **Browser Support**: Works with a variety of popular browsers (Safari, Chrome, Firefox, Edge, Arc, Brave, Vivaldi, Orion).
 - **Service Integration**: Utilizes services like 12ft.io and freedium.cfd (for Medium articles) to bypass paywalls.
 
 ## How to Use
@@ -27,14 +27,16 @@ This Raycast extension allows you to bypass paywalls on popular services. It wor
 
 ## Supported Browsers
 
-The extension supports browsers based on WebKit and Chromium engines, including but not limited to:
+The extension supports most popular browsers based on WebKit, Chromium and Gecko. It has been explicitly tested and confirmed to work with the following browsers:
 
--   Safari
--   Google Chrome
--   Microsoft Edge
--   Arc
--   Brave Browser
--   Vivaldi
--   Orion
+- Safari
+- Google Chrome
+- Microsoft Edge
+- Firefox
+- Arc
+- Brave Browser
+- Vivaldi
+- Orion
+- Zen
 
-If your favorite browser isn't listed, it might still work if it's based on WebKit or Chromium.
+If your browser is not on this list, the extension will attempt to treat it as a Chromium-based browser. This means many other browsers may work, but compatibility is not guaranteed for those not explicitly listed. Gecko-based browsers other than Firefox and Zen are less likely to work without being explicitly added.
