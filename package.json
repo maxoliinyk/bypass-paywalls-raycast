@@ -8,15 +8,15 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "bypass-paywall-for-current-tab",
-      "title": "Bypass Paywall for Current Tab",
+      "name": "bypass-for-current-tab",
+      "title": "Bypass for Current Tab",
       "subtitle": "",
-      "description": "Bypasses paywall for the currently active browser tab.",
+      "description": "Detects your currently active browser tab, and bypasses paywall for it.",
       "mode": "no-view"
     },
     {
       "name": "bypass-from-clipboard",
-      "title": "Bypass Paywall from Clipboard",
+      "title": "Bypass from Clipboard",
       "subtitle": "",
       "description": "Reads a URL from your clipboard, bypasses the paywall, and copies the new URL back to clipboard.",
       "mode": "no-view"

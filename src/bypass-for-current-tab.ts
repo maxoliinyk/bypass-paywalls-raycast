@@ -10,7 +10,7 @@ export default async function Command() {
 
     await openURL(result);
 
-    await showHUD("Open bypassed URL")
+    await showHUD("Bypassed URL Opened")
   } catch (error) {
     console.error(error);
     // await showHUD("Failed to complete command");
