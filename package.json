@@ -1,17 +1,24 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "bypass-paywall-safari",
-  "title": "Bypass Paywall Safari",
-  "description": "This extension gets your latest Safari URL and bypasses the paywall using 3rd party services.",
+  "name": "bypass-paywall",
+  "title": "Bypass Paywall",
+  "description": "This extension bypasses paywall in your current URL. It works with your favorite browsers",
   "icon": "extension-icon.png",
   "author": "maxoliinyk",
   "license": "MIT",
   "commands": [
     {
-      "name": "bypass-paywall-in-recent-url",
-      "title": "Bypass Paywall in Recent URL",
-      "subtitle": "Subtitle",
-      "description": "Description",
+      "name": "bypass-paywall-for-current-tab",
+      "title": "Bypass Paywall for Current Tab",
+      "subtitle": "",
+      "description": "Bypasses paywall for the currently active browser tab.",
+      "mode": "no-view"
+    },
+    {
+      "name": "bypass-from-clipboard",
+      "title": "Bypass Paywall from Clipboard",
+      "subtitle": "",
+      "description": "Reads a URL from your clipboard, bypasses the paywall, and copies the new URL back to clipboard.",
       "mode": "no-view"
     }
   ],
