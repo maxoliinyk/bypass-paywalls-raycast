@@ -37,4 +37,4 @@ export default async function Command() {
       message: error instanceof Error ? error.message : "An unknown error occurred",
     });
   }
-} 
+}

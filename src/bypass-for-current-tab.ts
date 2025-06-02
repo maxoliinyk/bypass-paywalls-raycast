@@ -1,4 +1,4 @@
-import { showHUD, closeMainWindow, showToast, Toast } from "@raycast/api";
+import { showHUD, closeMainWindow } from "@raycast/api";
 import { getCurrentTabURL, openURL, getBypassURL } from "./utils";
 
 export default async function Command() {
@@ -10,7 +10,7 @@ export default async function Command() {
 
     await openURL(result);
 
-    await showHUD("Bypassed URL Opened")
+    await showHUD("Bypassed URL Opened");
   } catch (error) {
     console.error(error);
     // await showHUD("Failed to complete command");

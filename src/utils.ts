@@ -8,20 +8,20 @@ interface BrowserInfo {
 // List of supported and tested browsers
 const SUPPORTED_BROWSERS: Record<string, BrowserInfo> = {
   // WebKit
-  "Safari": { engine: "webkit" },
-  "Orion": { engine: "webkit" },
+  Safari: { engine: "webkit" },
+  Orion: { engine: "webkit" },
   "Orion RC": { engine: "webkit" },
 
   // Chromium
   "Google Chrome": { engine: "chromium" },
   "Microsoft Edge": { engine: "chromium" },
   "Brave Browser": { engine: "chromium" },
-  "Vivaldi": { engine: "chromium" },
-  "Arc": { engine: "chromium" },
+  Vivaldi: { engine: "chromium" },
+  Arc: { engine: "chromium" },
 
   // Gecko
-  "firefox": { engine: "gecko" },
-  "zen": { engine: "gecko" },
+  firefox: { engine: "gecko" },
+  zen: { engine: "gecko" },
 };
 
 async function getActiveBrowserInfo(): Promise<{ name: string; engine: BrowserInfo["engine"] }> {
@@ -45,7 +45,9 @@ async function getActiveBrowserInfo(): Promise<{ name: string; engine: BrowserIn
   if (browserInfo) {
     return { name: frontmostAppName, engine: browserInfo.engine };
   } else {
-    console.warn(`[getActiveBrowserInfo] Frontmost app ('${frontmostAppName}') is not in SUPPORTED_BROWSERS. Assuming Chromium engine as a fallback.`);
+    console.warn(
+      `[getActiveBrowserInfo] Frontmost app ('${frontmostAppName}') is not in SUPPORTED_BROWSERS. Assuming Chromium engine as a fallback.`,
+    );
 
     // If there's unknown browser – assume that's Chromium (works in most cases)
     return { name: frontmostAppName, engine: "chromium" };
